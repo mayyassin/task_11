@@ -28,8 +28,7 @@
       </li>
     {% endfor %}
   </ul>
-  {% if request.user.is_authenticated %}
-    {%if restaurant.owner or request.user.is_staff%}
+    {%if request.user == restaurant.owner or request.user.is_staff%}
       <div class="card-body">
         <div class="row text-center">
           <div class="col-md-4">
@@ -45,7 +44,6 @@
                 <a href="{% url 'restaurant-delete' restaurant.id %}" class="btn btn-outline-danger btn-block">Delete</a>
             </div>
     {%endif%}
-  {%endif%}
         </div>
       </div>
     </div>

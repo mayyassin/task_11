@@ -51,11 +51,13 @@ def restaurant_list(request):
 
 
 def restaurant_detail(request, restaurant_id):
+    
     restaurant = Restaurant.objects.get(id=restaurant_id)
     items = Item.objects.filter(restaurant=restaurant)
     context = {
         "restaurant": restaurant,
         "items": items,
+        "user":request.user
     }
     return render(request, 'detail.html', context)
 
